@@ -7,5 +7,3 @@ button.addEventListener("click",()=>
 
 
 
-const proizvod =document.getElementsByClassName("addToCart");
-console.log(proizvod);
