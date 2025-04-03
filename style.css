@@ -1,0 +1,265 @@
+:root{
+    --header-color: #1b263b;
+}
+
+@keyframes popInButton {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+    
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(Fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+    font-family: 'Bebas';
+    src: url(Fonts/Bebas_Neue/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'InterT';
+    src: url(Fonts/Inter_Tight/InterTight-VariableFont_wght.ttf);
+}
+
+
+
+
+
+body{
+    margin:0;
+    padding: 0;
+    background-color: white;
+    color:#0d1b2a;
+}
+
+
+
+#header{
+    z-index: 100;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color:var(--header-color);
+    display: flex;
+    position:fixed;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+
+#logoslika{
+   height: 100px;
+}
+
+
+#kategorija{
+   color:white;
+   text-shadow: 0 0 10px rgba(255,255,255,0.6);
+   text-align: center;
+   height: 100px;
+    width: 20%;
+    font-family: 'Roboto';
+    align-content: center;
+}
+
+#searchbar{
+    height: 20%;
+    width: 60%;
+    border-radius: 10px;
+    border:0px;
+    font-family: 'Roboto';
+    font-weight: 600;
+    padding: 5px;
+    box-shadow: 0 0 2px white;
+}
+#searchCart{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+#search:hover,#cart:hover{
+    scale: 1.3;
+}
+
+#search{
+    cursor: pointer;
+    max-height: 40px;
+    transition:all 0.4s ease;
+}
+#cart{
+    cursor: pointer;
+    max-height: 40px;  
+    transition:all 0.4s ease;
+}
+
+
+
+/*img*/
+#shopImage{
+    position: relative;
+    content: url(Pictures/shopImage.jpg);
+    width: 100%;
+    z-index: -1;
+}
+
+#shopText{
+    color:white;
+    text-shadow: 0 0 15px rgba(255,255,255,0.6);
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    font-family: 'Roboto';
+    font-size: 4rem;
+    text-align: center;
+    width: 100%;
+}
+
+#shopButton{
+    cursor: pointer;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+    top: 200%;
+    left: 50%;
+    translate: -50% 0;
+    border: 3px solid #0d1b2a;
+    background-color: rgba(255, 255, 255, 0.4);
+    color:#0d1b2a;
+    padding: 2rem;
+    font-weight: 700;
+    font-size: 2rem;
+    box-shadow: 0 0 10px #0d1b2a;
+    transition: all 0.5s ease;
+}
+
+#shopButton:hover{
+    background-color: #0d1b2a;
+    color:white;
+    box-shadow: 0 0 30px #0d1b2a;
+}
+
+.izbor{
+    position: relative;
+    text-align: center;
+    font-family: 'Roboto';
+    text-shadow: 0 0 2px #0d1b2a;
+    z-index: 1;
+
+}
+#categories{
+    background-color:#e0e1dd;
+    width: 100%;
+    display: flex;
+    gap: 2%;
+    justify-content: space-evenly;
+
+}
+
+.item{
+    font-family: 'Roboto';
+    text-shadow: 0 0 1px #0d1b2a;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.item:hover{
+    scale: 1.4;
+}
+
+
+
+/*KATALOG*/
+
+#Katalog{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.proizvodImage{
+    width: 100%;
+}
+
+.proizvod:hover{
+    scale:1.3;
+}
+
+.proizvod:hover .addToCart{
+    display: inline;
+    animation: popInButton 1s both;
+    
+}
+
+.proizvod{
+    cursor: pointer;
+    border: 1px solid white;
+    width: 400px;
+    font-family: 'InterT';
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 0px;
+    transition:all 0.5s ease;
+}
+
+.addToCart{
+    display: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: #0d1b2a;
+    color:white;
+    transition: all 0.5s ease;
+}
+
+
+.price{
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.name{
+    position: relative;
+    z-index: 1;
+}
+
+
+
+#extras{
+    margin-top: 10%;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #0d1b2a;
+}
+
+#contact{
+    padding-right: 5%;
+    font-family: 'Roboto';
+    color: white;
+    height: 100%;
+    align-content: center;
+    text-align: right;
+}
+#logoFooter{
+    height:100%;
+}
