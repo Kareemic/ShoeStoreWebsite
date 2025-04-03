@@ -4,14 +4,14 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shoe store</title>
 </head>
 <body>
     <div id="header">
         <div id="logo"><img id="logoslika" src="Pictures/logo.png"></div>
-        <div id="kategorija"><h1 id="trenutnaKategorija">Adidas</h1></div>
+        <div id="kategorija"><h1 id="trenutnaKategorija" >Yeezy</h1></div>
         
-        <div id="searchCart"><input id="searchbar" type="text"><img id="search" src="Pictures/search.png"><img id="cart" src="Pictures/shoppingcart.png"></div>
+        <div id="searchCart"><input id="searchbar" type="text"><img id="search" src="Pictures/search.png"><a href="cart.html"><div class="hasAfter"><img id="cart"  src="Pictures/shoppingcart.png"></div></a></div>
     </div>
 
 
@@ -32,15 +32,14 @@
         <h2 class="item">Crocs</h2>
     </div>
 
-    <h1 class="izbor">Adidas</h1>
+    <h1 class="izbor" id="odabir">Yeezy</h1>
     <div id="Katalog">
-        <div class="proizvod"><img class="proizvodImage" src="Pictures/Yeezy/yeezy350 blackorange.jpg"><button class="addToCart" >Add to cart</button><p class="name">Yeezy 350 v2 Black Orange</p><h4 class="price"><s>(200€)</s> <strong>149.99€</strong></h4></div>
-        <div class="proizvod"><img class="proizvodImage" src="Pictures/Yeezy/yeezy350 blackblue.jpg"><button class="addToCart" >Add to cart</button><p class="name">Yeezy 350 v2 Black Blue</p><h4 class="price"><s>(200€)</s> <strong>149.99€</strong></h4></div>
-        <div class="proizvod"><img class="proizvodImage" src="Pictures/Yeezy/yeezy350 blackred.jpg"><button class="addToCart" >Add to cart</button><p class="name">Yeezy 350 v2 Black Red</p><h4 class="price"><s>(200€)</s> <strong>149.99€</strong></h4></div>
-        <div class="proizvod"><img class="proizvodImage" src="Pictures/Yeezy/yeezy350 blackorange.jpg"><button class="addToCart" >Add to cart</button><p class="name">Yeezy 350 v2 Black Orange</p><h4 class="price"><s>(200€)</s> <strong>149.99€</strong></h4></div>
-        <div class="proizvod"><img class="proizvodImage" src="Pictures/Yeezy/yeezy350 blackorange.jpg"><button class="addToCart" >Add to cart</button><p class="name">Yeezy 350 v2 Black Orange</p><h4 class="price"><s>(200€)</s> <strong>149.99€</strong></h4></div>
+            <!--<div class="proizvod"><img class="proizvodImage" src="Pictures/Yeezy/yeezy350 blackorange.jpg"><button class="addToCart" >Add to cart</button><p class="name">Yeezy 350 v2 Black Orange</p><h4 class="price"><s>(200€)</s> <strong>149.99€</strong></h4></div>-->
     </div>
 
+    <div id="categoryDiv"></div>
+
+  
     <div id="extras">
         <img id="logoFooter" src="Pictures/logo.png"> 
         <div id="contact">
@@ -49,6 +48,6 @@
             <p>Pretplati se</p>
         </div>
     </div>
-<script src="script.js"></script>
+<script src="data.js" ></script>
 </body>
 </html>
