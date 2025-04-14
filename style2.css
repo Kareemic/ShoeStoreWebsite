@@ -1,0 +1,557 @@
+@media (max-width:1024px){
+
+    :root{
+        --header-color: #1b263b;
+        
+    }
+    
+    @keyframes popInButton {
+        0%{
+            opacity: 0;
+        }
+    
+        100%{
+            opacity: 1;
+        }
+        
+    }
+    
+    @font-face {
+        font-family: 'Roboto';
+        src: url(Fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
+    }
+    
+    @font-face {
+        font-family: 'Bebas';
+        src: url(Fonts/Bebas_Neue/BebasNeue-Regular.ttf);
+    }
+    
+    @font-face {
+        font-family: 'InterT';
+        src: url(Fonts/Inter_Tight/InterTight-VariableFont_wght.ttf);
+    }
+    
+    
+    #head-dropdown{
+        display: none;
+    }
+    
+    
+    body{
+        margin:0;
+        padding: 0;
+        background-color: white;
+        color:#0d1b2a;
+    }
+    
+    
+    
+    #header{
+        z-index: 100;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color:var(--header-color);
+        display: flex;
+        position:fixed;
+        width: 100%;
+        height: 100px;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+    }
+    
+    
+    #logoslika{
+       height: 100px;
+    }
+    
+    
+    #kategorija{
+       color:white;
+       text-shadow: 0 0 10px rgba(255,255,255,0.6);
+       text-align: center;
+       height: 100px;
+        width: 20%;
+        font-family: 'Roboto';
+        align-content: center;
+    }
+    
+    #searchbar{
+        height: 20%;
+        width: 60%;
+        border-radius: 10px;
+        border:0px;
+        font-family: 'Roboto';
+        font-weight: 600;
+        padding: 5px;
+        box-shadow: 0 0 2px white;
+    }
+    #searchCart{
+        
+        display: flex;
+        width: 50%;
+        justify-content: space-evenly;
+        align-items: center;
+        
+    }
+    
+    #search:hover,#cart:hover{
+        scale: 1.3;
+    }
+    
+    #search{
+        cursor: pointer;
+        max-height: 40px;
+        transition:all 0.4s ease;
+    }
+    #cart{
+        position: relative;
+        cursor: pointer;
+        max-height: 40px;  
+        transition:all 0.4s ease;
+    }
+    
+    
+    .hasAfter{
+        position:relative;
+        
+    }
+    
+    .hasAfter::before{
+       
+        pointer-events: none;
+        opacity: var(--show-cart,0);
+        position:absolute;
+        background-color: red;
+        border-radius: 50%;
+        content: var(--cart-count,"0");
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 30px;
+        z-index: 10;
+        font-size: 1rem;
+        border: 1px solid black;
+        align-items: center;
+        align-content: center;
+        transition:all 0.4s ease;
+        color:white;
+        font-size: 1rem;
+        font-family: 'Roboto';
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    
+    
+    /*img*/
+    #shopContainer{
+        position: relative;
+    }
+    
+    
+    
+    
+    #shopImage{
+        position: relative;
+        content: url(Pictures/shopImage.jpg);
+        width: 100%;
+        z-index: -1;
+    }
+    
+    #shopText{
+        color:white;
+        text-shadow: 0 0 15px rgba(255,255,255,0.6);
+        z-index: 1;
+        position: absolute;
+        font-size: clamp(2rem, 5vw, 4rem); /* Scales between 2rem and 4rem based on viewport width */
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        width: 90%; /* Ensure it doesn't overflow horizontally */
+        font-family: 'Roboto';
+        text-align: center;
+    }
+    
+    #shopButton{
+        cursor: pointer;
+        position: absolute;
+        width: fit-content;
+        height: fit-content;
+        z-index: 1;
+        font-size: clamp(1.5rem, 3vw, 2rem); /* Scales between 1.5rem and 2rem based on viewport width */
+        padding: clamp(1rem, 2vw, 2rem); /* Dynamically adjust padding */
+        top:70%;
+        left:50%;
+        translate: -50% 0;
+        border: 3px solid #0d1b2a;
+        background-color: rgba(255, 255, 255, 0.4);
+        color:#0d1b2a;
+        box-shadow: 0 0 10px #0d1b2a;
+        transition: all 0.5s ease;
+    }
+    
+    #shopButton:hover{
+        background-color: #0d1b2a;
+        color:white;
+        box-shadow: 0 0 30px #0d1b2a;
+    }
+    
+    .izbor{
+        position: relative;
+        text-align: center;
+        font-family: 'Roboto';
+        text-shadow: 0 0 2px #0d1b2a;
+        z-index: 1;
+    
+    }
+    #categories{
+        background-color:#e0e1dd;
+        width: 100%;
+        display: flex;
+        gap: 2%;
+        justify-content: space-evenly;
+    
+    }
+    
+    .item{
+        font-family: 'Roboto';
+        text-shadow: 0 0 1px #0d1b2a;
+        transition: all 0.5s ease;
+        cursor: pointer;
+    }
+    
+    .item:hover{
+        scale: 1.4;
+    }
+    
+    
+    
+    /*KATALOG*/
+    
+    #Katalog{
+        width: 100%;
+        height: max-content;
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        
+    
+    }
+    
+    .proizvodImage{
+        width: 100%;
+    }
+    
+    .proizvod:hover{
+        scale:1.1;
+       
+    }
+    
+    .proizvod:hover .addToCart{
+        display: inline;
+        animation: popInButton 1s both;
+        
+    }
+    
+    .proizvod{
+        
+        height: 400px;
+        cursor: pointer;
+        border: 1px solid white;
+        width: 400px;
+        font-family: 'InterT';
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 0px;
+        transition:all 0.5s ease;
+    }
+    
+    .addToCart{
+        border: 2px solid #1b263b;
+        display: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        background-color: #0d1b2a;
+        color:white;
+        transition: all 0.5s ease;
+        box-shadow: 0 0 10px #1b263b;
+    }
+    .addToCart:hover{
+        scale: 1.1;
+    }
+    
+    
+    .price{
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .name{
+        position: relative;
+        z-index: 1;
+    }
+    
+    
+    
+    #extras{
+        margin-top: 10%;
+        position: relative;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #0d1b2a;
+    }
+    
+    #contact{
+        padding-right: 5%;
+        font-family: 'Roboto';
+        color: white;
+        height: 100%;
+        align-content: center;
+        text-align: right;
+    }
+    #logoFooter{
+        height:100%;
+    }
+}
+
+@media (max-width: 1023px) {
+    @keyframes slideInFromTop {
+        from { transform: translateY(-100%); }
+        to { transform: translateY(0); }
+    }
+
+    @keyframes slideOutToTop {
+        from { transform: translateY(0); }
+        to { transform: translateY(-100%); }
+    }
+
+    #header {
+        background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 100%);
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 5px 15px;
+        position: relative;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+    #header.sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        animation: slideInFromTop 0.3s ease-in-out;
+    }
+
+    #header.sticky.hide {
+        animation: slideOutToTop 0.3s ease-in-out forwards;
+    }
+
+    #logo {
+        width: 80px;
+        padding: 5px;
+        transition: all 0.3s ease;
+    }
+
+    #logo:hover {
+        transform: scale(1.05);
+    }
+
+    #logoslika {
+        height: 60px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    #kategorija {
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    #trenutnaKategorija {
+        font-size: 1.5rem;
+        margin: 0;
+        padding: 10px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+    }
+
+    #searchCart {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    #searchbar {
+        height: 35px;
+        background: rgba(255,255,255,0.9);
+        padding: 0 15px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        width: 50%;
+    }
+
+    #searchbar:focus {
+        width: 60%;
+        box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        outline: none;
+    }
+
+    #search, #cart {
+        max-height: 30px;
+        filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));
+        transition: all 0.3s ease;
+    }
+
+    #search:hover, #cart:hover {
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .hasAfter::before {
+        box-shadow: 0 0 10px rgba(255,0,0,0.5);
+        animation: pulseNotification 2s infinite;
+    }
+
+    @keyframes pulseNotification {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    #header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    #searchCart {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    #kategorija {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    /* Dropdown styles */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .category-dropdown {
+        position: relative;
+        width: 100%;
+        z-index: 90;
+    }
+
+    #categories {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #e0e1dd;
+        flex-direction: column;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transform-origin: top;
+    }
+
+    #categories.active {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    .item {
+        width: 100%;
+        padding: 15px 0;
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        transition: all 0.3s ease;
+    }
+
+    .item:hover {
+        background-color: #1b263b;
+        color: white;
+        scale: 1;
+        padding-left: 20px;
+    }
+
+    #dropdownBtn {
+        width: 100%;
+        padding: 15px;
+        background-color: #1b263b;
+        color: white;
+        border: none;
+        font-family: 'Roboto';
+        font-size: 1.1rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+
+    #dropdownBtn::after {
+        content: '▼';
+        font-size: 0.8em;
+    }
+
+    #dropdownBtn.active::after {
+        transform: rotate(180deg);
+    }
+
+    /* Adjust other mobile-specific styles */
+    #Katalog {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .proizvod {
+        width: calc(50% - 20px); /* Adjust width to fit two items per row with gap */
+        max-width: 300px;
+        margin: 0; /* Remove margin to let gap handle spacing */
+        height: auto; /* Allow height to be responsive */
+        min-height: 350px;
+    }
+
+    /* Ensure last row items align left */
+    #Katalog::after {
+        content: "";
+        flex: auto;
+    }
+}
