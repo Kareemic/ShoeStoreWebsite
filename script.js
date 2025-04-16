@@ -24,21 +24,25 @@ let ticking = false;
 window.addEventListener('scroll', () => {
     if (!ticking) {
         window.requestAnimationFrame(() => {
-            if (window.scrollY > 100) { 
-                header.classList.add('sticky');
-                
-                if (window.scrollY > lastScrollY + 5) { 
-                    header.classList.add('hide');
-                } else if (window.scrollY < lastScrollY - 5) { 
-                    header.classList.remove('hide');
-                }
-            } else {
-                
+            const currentScroll = window.scrollY;
+
+            // If we're at the top, remove sticky behavior
+            if (currentScroll < 100) {
                 header.classList.remove('sticky');
                 header.classList.remove('hide');
+            } else {
+                // Add sticky when scrolling down
+                header.classList.add('sticky');
+                
+                // Hide when scrolling down, show when scrolling up
+                if (currentScroll > lastScrollY + 5) {
+                    header.classList.add('hide');
+                } else if (currentScroll < lastScrollY - 5) {
+                    header.classList.remove('hide');
+                }
             }
             
-            lastScrollY = window.scrollY;
+            lastScrollY = currentScroll;
             ticking = false;
         });
         ticking = true;
