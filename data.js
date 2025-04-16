@@ -1,6 +1,3 @@
-
-
-
 const data = {
     "website": "Shoes",
     "categories": [
@@ -101,6 +98,156 @@ const data = {
                 }
             ]
         }
+        ,
+        { 
+            "name" : "McQueen",
+            "image" : "Mcqueen.jpg",
+            "products" : [
+                { 
+                    "name" : "Mcqueen blue " , "image" : "./Pictures/McQueen/blue.jpeg","price":"79.99"
+                },
+                { 
+                    "name" : "Mcqueen black ", "image" : "./Pictures/McQueen/black.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Mcqueen Pink ", "image" : "./Pictures/McQueen/pink.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Mcqueen White ", "image" : "./Pictures/McQueen/white.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                   "name" : "Mcqueen Gold ", "image" :"./Pictures/McQueen/gold.jpeg","price":"79.99"
+                }
+            ]
+        }
+        ,
+        { 
+            "name" : "New Balance",
+            "image" : "New Balance.jpg",
+            "products" : [
+                { 
+                    "name" : "New Balance black Ego" , "image" : "./Pictures/New Balance/black.jpeg","price":"79.99"
+                },
+                { 
+                    "name" : "New Balance black 530", "image" : "./Pictures/New Balance/black2.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "New Balance blue 530", "image" : "./Pictures/New Balance/blue.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "New Balance blue Async ", "image" : "./Pictures/New Balance/blue2.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                   "name" : "Mcqueen Gold ", "image" :"./Pictures/New Balance/black.jpeg","price":"79.99"
+                }
+            ]
+        }
+        ,
+        { 
+            "name" : "Air Jordan",
+            "image" : "New Balance.jpg",
+            "products" : [
+                { 
+                    "name" : "Air Jordan Black" , "image" : "./Pictures/Air Jordan/black.jpeg","price":"79.99"
+                },
+                { 
+                    "name" : "Air Jordan White", "image" : "./Pictures/Air Jordan/white.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Air Jordan Brown", "image" : "./Pictures/Air Jordan/brown.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Air Jordan Red", "image" : "./Pictures/Air Jordan/red.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                   "name" : "Air Jordan Blue", "image" :"./Pictures/Air Jordan/blue.jpeg","price":"79.99"
+                }
+            ]
+        }
+        ,
+        { 
+            "name" : "Hoka",
+            "image" : "Hoka.jpg",
+            "products" : [
+                { 
+                    "name" : "Hoka White" , "image" : "./Pictures/Hoka/white.jpeg","price":"79.99"
+                },
+                { 
+                    "name" : "Hoka Gray", "image" : "./Pictures/Hoka/gray.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Hoka Pink", "image" : "./Pictures/Hoka/pink.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Hoka Orange", "image" : "./Pictures/Hoka/orange.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                   "name" : "Hoka Black", "image" :"./Pictures/Hoka/black.jpeg","price":"79.99"
+                }
+            ]
+        }
+        ,
+        { 
+            "name" : "Converse",
+            "image" : "Converse.jpg",
+            "products" : [
+                { 
+                    "name" : "Converse All Star White Low" , "image" : "./Pictures/Converse/white.jpeg","price":"79.99"
+                },
+                { 
+                    "name" : "Converse All Star Black Low", "image" : "./Pictures/Converse/black low.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Converse All Star Black High", "image" : "./Pictures/Converse/black high.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Converse All Star Beige Low", "image" : "./Pictures/Converse/bez low.jpeg","price":"79.99"
+                }
+                ,
+                { 
+                   "name" : "Converse All Star Beige High", "image" :"./Pictures/Converse/bez high.jpeg","price":"79.99"
+                }
+            ]
+        }
+        ,
+        { 
+            "name" : "Loewe",
+            "image" : "Hoka.jpg",
+            "products" : [
+                { 
+                    "name" : "Loewe White" , "image" : "./Pictures/Loewe/white.jpg","price":"79.99"
+                },
+                { 
+                    "name" : "Loewe Gray", "image" : "./Pictures/Loewe/gray.jpg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Loewe Green", "image" : "./Pictures/Loewe/green.jpg","price":"79.99"
+                }
+                ,
+                { 
+                    "name" : "Loewe Blue", "image" : "./Pictures/Loewe/blue.jpg","price":"79.99"
+                }
+                ,
+                { 
+                   "name" : "Loewe Black", "image" :"./Pictures/Loewe/black.jpg","price":"79.99"
+                }
+            ]
+        }
     ]
 }
 
@@ -122,6 +269,30 @@ proizvodi.products.forEach(product => {
        <h4 class="price"><s>(200€)</s> <strong>${product.price}€</strong></h4>
     `;
     categoryDiv.appendChild(productDiv);
+});
+
+// Update cart count on page load
+window.addEventListener('load', () => {
+    const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    if(cartItems.length > 0) {
+        const totalItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        document.documentElement.style.setProperty("--show-cart", 1);
+        document.documentElement.style.setProperty("--cart-count", `"${totalItems}"`);
+    }
+});
+
+// When returning from another page, also update the cart
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+        const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        if(cartItems.length > 0) {
+            const totalItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            document.documentElement.style.setProperty("--show-cart", 1);
+            document.documentElement.style.setProperty("--cart-count", `"${totalItems}"`);
+        } else {
+            document.documentElement.style.setProperty("--show-cart", 0);
+        }
+    }
 });
 
 const odabir=document.getElementById("odabir");
@@ -152,27 +323,38 @@ elementiKat.forEach(item=>{item.addEventListener("click",function(){
 console.log(elementiKat);
 
 
-const cartItems =[];
+const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+if(cartItems.length!=0){
+    document.documentElement.style.setProperty("--show-cart",1);
+    document.documentElement.style.setProperty("--cart-count",`"${cartItems.length}"`);
+}
 const Buttons=document.querySelectorAll(".addToCart");
 const cart=document.getElementById("kosarica");
 
 
 
-function addToCart(product){
-    cartItems.push(product);
-    sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
-    console.log(product);
-    updateCart();
+function addToCart(product) {
+    const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    const existingItem = cartItems.find(item => item.name === product.name);
     
-
+    if (existingItem) {
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+        cartItems.push({...product, quantity: 1});
+    }
+    
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCart();
 }
 
 
 const cartIcon=document.getElementById("cart");
 function updateCart() {
-    let count=cartItems.length;
-    document.documentElement.style.setProperty("--show-cart",1)
-    document.documentElement.style.setProperty("--cart-count",`"${cartItems.length}"`);
+    const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    const totalItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    
+    document.documentElement.style.setProperty("--show-cart", 1);
+    document.documentElement.style.setProperty("--cart-count", `"${totalItems}"`);
 }
 
 

@@ -1,19 +1,15 @@
-const cartItems=loadCart();
-
+const cartItems = loadCart();
 
 function loadCart() {
-    console.log(sessionStorage);
-   const item= JSON.parse(sessionStorage.getItem('cartItems')) || [];
-   return item;
+    const items = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    
+    return items.map(item => ({...item, quantity: item.quantity || 1}));
 }
 
 function renderCart() {
-   
-    console.log(cartItems);
     const cartContainer = document.getElementById("cart-items");
-    cartContainer.innerHTML = ""; // Clear current items
+    cartContainer.innerHTML = "";
     
-    console.log(cartItems);
     if (cartItems.length === 0) {
         document.getElementById("empty-cart-message").style.display = "block";
         document.querySelector(".cart-footer").style.display = "none";
@@ -27,7 +23,12 @@ function renderCart() {
             itemDiv.innerHTML = `
                 <img src="${item.image}" alt="${item.name}">
                 <div class="item-name">${item.name}</div>
-                <div class="item-price">${item.price}€</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                </div>
+                <div class="item-price">${(item.price * item.quantity).toFixed(2)}€</div>
                 <button class="remove-btn" onclick="removeItem(${index})">Ukloni</button>
             `;
             cartContainer.appendChild(itemDiv);
@@ -39,7 +40,7 @@ function renderCart() {
 function removeItem(index) {
     cartItems.splice(index, 1);
     sessionStorage.removeItem('cartItems'); 
-    sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
     renderCart();
 }
 
@@ -49,9 +50,19 @@ function emptyCart() {
     renderCart();
 }
 
+function updateQuantity(index, change) {
+    const newQuantity = cartItems[index].quantity + change;
+    if (newQuantity > 0) {
+        cartItems[index].quantity = newQuantity;
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+        renderCart();
+    } else if (newQuantity === 0) {
+        removeItem(index);
+    }
+}
+
 function updateTotalPrice() {
-    let total=0;
-    cartItems.forEach(item=>{total+=parseFloat(item.price)})
+    const total = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
     document.getElementById("total-price").textContent = total.toFixed(2);
 }
 
